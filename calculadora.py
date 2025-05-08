@@ -4,13 +4,12 @@ import math
 class Calculadora:
     def __init__(self, master):
         master.title('Calculadora')
-        master.geometry('400x650+0+0')
-        master.config(bg='light cyan')
+        master.geometry('420x650+0+0')
+        master.config(bg='navy')
         master.resizable(False, False)
-
         self.equacao = StringVar()
         self.valor_entrada = ''
-        Entry(width=23, border=5, font=('Cambria', 20), textvariable=self.equacao).place(x=20, y=10)
+        Entry(width=25, border=5, font=('Cambria', 20), textvariable=self.equacao).place(x=20, y=10)
 
         # Espaçamento entre os botões
         espaco_x = 20
@@ -19,39 +18,40 @@ class Calculadora:
         altura_botao = 80
 
         # Primeira linha de botões
-        Button(width=11, height=4, text='±', relief='flat', bg='white', command=self.negativo).place(x=espaco_x, y=70)
-        Button(width=11, height=4, text='1/x', relief='flat', bg='white', command=self.fraçao).place(x=espaco_x + largura_botao + espaco_x, y=70)
-        Button(width=11, height=4, text='x²', relief='flat', bg='white', command=self.potencia).place(x=espaco_x + 2 * (largura_botao + espaco_x), y=70)
-        Button(width=11, height=4, text='√', relief='flat', bg='white', command=self.raiz).place(x=espaco_x + 3 * (largura_botao + espaco_x), y=70)
+        Button(width=11, height=4, text='1/x', relief='raised', border='3', bg='LightSkyBlue1', command=self.fraçao).place(x=espaco_x + largura_botao + espaco_x, y=70)
+        Button(width=11, height=4, text='x²', relief='raised', border='3', bg='LightSkyBlue1', command=self.potencia).place(x=espaco_x + 2 * (largura_botao + espaco_x), y=70)
+        Button(width=11, height=4, text='√', relief='raised', bg='LightSkyBlue1', command=self.raiz).place(x=espaco_x + 3 * (largura_botao + espaco_x), y=70)
 
         # Segunda linha de botões
-        Button(width=11, height=4, text='C', relief='flat', bg='snow3', command=self.limpar).place(x=espaco_x, y=70 + altura_botao + espaco_y)
-        Button(width=11, height=4, text='(', relief='flat', bg='white', command=lambda: self.mostrar('(')).place(x=espaco_x + largura_botao + espaco_x, y=70 + altura_botao + espaco_y)
-        Button(width=11, height=4, text=')', relief='flat', bg='white', command=lambda: self.mostrar(')')).place(x=espaco_x + 2 * (largura_botao + espaco_x), y=70 + altura_botao + espaco_y)
-        Button(width=11, height=4, text='%', relief='flat', bg='white', command=lambda: self.mostrar('%')).place(x=espaco_x + 3 * (largura_botao + espaco_x), y=70 + altura_botao + espaco_y)
+        Button(width=11, height=4, text='±', relief='raised', border='3', bg='LightSkyBlue1', command=self.negativo).place(x=espaco_x, y=70 + altura_botao + espaco_y)
+        Button(width=11, height=4, text='(', relief='raised', border='3', bg='LightSkyBlue1', command=lambda: self.mostrar('(')).place(x=espaco_x + largura_botao + espaco_x, y=70 + altura_botao + espaco_y)
+        Button(width=11, height=4, text=')', relief='raised', border='3', bg='LightSkyBlue1', command=lambda: self.mostrar(')')).place(x=espaco_x + 2 * (largura_botao + espaco_x), y=70 + altura_botao + espaco_y)
+        Button(width=11, height=4, text='%', relief='raised', border='3', bg='LightSkyBlue1', command=lambda: self.mostrar('%')).place(x=espaco_x + 3 * (largura_botao + espaco_x), y=70 + altura_botao + espaco_y)
 
         # Terceira linha de botões
-        Button(width=11, height=4, text='7', relief='flat', bg='white', command=lambda: self.mostrar('7')).place(x=espaco_x, y=70 + 2 * (altura_botao + espaco_y))
-        Button(width=11, height=4, text='8', relief='flat', bg='white', command=lambda: self.mostrar('8')).place(x=espaco_x + largura_botao + espaco_x, y=70 + 2 * (altura_botao + espaco_y))
-        Button(width=11, height=4, text='9', relief='flat', bg='white', command=lambda: self.mostrar('9')).place(x=espaco_x + 2 * (largura_botao + espaco_x), y=70 + 2 * (altura_botao + espaco_y))
-        Button(width=11, height=4, text='*', relief='flat', bg='white', command=lambda: self.mostrar('*')).place(x=espaco_x + 3 * (largura_botao + espaco_x), y=70 + 2 * (altura_botao + espaco_y))
+        Button(width=11, height=4, text='7', relief='raised', border='3', bg='white', command=lambda: self.mostrar('7')).place(x=espaco_x, y=70 + 2 * (altura_botao + espaco_y))
+        Button(width=11, height=4, text='8', relief='raised', border='3', bg='white', command=lambda: self.mostrar('8')).place(x=espaco_x + largura_botao + espaco_x, y=70 + 2 * (altura_botao + espaco_y))
+        Button(width=11, height=4, text='9', relief='raised', border='3', bg='white', command=lambda: self.mostrar('9')).place(x=espaco_x + 2 * (largura_botao + espaco_x), y=70 + 2 * (altura_botao + espaco_y))
+        Button(width=11, height=4, text='*', relief='raised', border='3', bg='LightSkyBlue1', command=lambda: self.mostrar('*')).place(x=espaco_x + 3 * (largura_botao + espaco_x), y=70 + 2 * (altura_botao + espaco_y))
 
         # Quarta linha de botões
-        Button(width=11, height=4, text='4', relief='flat', bg='white', command=lambda: self.mostrar('4')).place(x=espaco_x, y=70 + 3 * (altura_botao + espaco_y))
-        Button(width=11, height=4, text='5', relief='flat', bg='white', command=lambda: self.mostrar('5')).place(x=espaco_x + largura_botao + espaco_x, y=70 + 3 * (altura_botao + espaco_y))
-        Button(width=11, height=4, text='6', relief='flat', bg='white', command=lambda: self.mostrar('6')).place(x=espaco_x + 2 * (largura_botao + espaco_x), y=70 + 3 * (altura_botao + espaco_y))
-        Button(width=11, height=4, text='-', relief='flat', bg='white', command=lambda: self.mostrar('-')).place(x=espaco_x + 3 * (largura_botao + espaco_x), y=70 + 3 * (altura_botao + espaco_y))
+        Button(width=11, height=4, text='4', relief='raised', border='3', bg='white', command=lambda: self.mostrar('4')).place(x=espaco_x, y=70 + 3 * (altura_botao + espaco_y))
+        Button(width=11, height=4, text='5', relief='raised', border='3', bg='white', command=lambda: self.mostrar('5')).place(x=espaco_x + largura_botao + espaco_x, y=70 + 3 * (altura_botao + espaco_y))
+        Button(width=11, height=4, text='6', relief='raised', border='3', bg='white', command=lambda: self.mostrar('6')).place(x=espaco_x + 2 * (largura_botao + espaco_x), y=70 + 3 * (altura_botao + espaco_y))
+        Button(width=11, height=4, text='-', relief='raised', border='3', bg='LightSkyBlue1', command=lambda: self.mostrar('-')).place(x=espaco_x + 3 * (largura_botao + espaco_x), y=70 + 3 * (altura_botao + espaco_y))
 
         # Quinta linha de botões
-        Button(width=11, height=4, text='1', relief='flat', bg='white', command=lambda: self.mostrar('1')).place(x=espaco_x, y=70 + 4 * (altura_botao + espaco_y))
-        Button(width=11, height=4, text='2', relief='flat', bg='white', command=lambda: self.mostrar('2')).place(x=espaco_x + largura_botao + espaco_x, y=70 + 4 * (altura_botao + espaco_y))
-        Button(width=11, height=4, text='3', relief='flat', bg='white', command=lambda: self.mostrar('3')).place(x=espaco_x + 2 * (largura_botao + espaco_x), y=70 + 4 * (altura_botao + espaco_y))
-        Button(width=11, height=4, text='+', relief='flat', bg='white', command=lambda: self.mostrar('+')).place(x=espaco_x + 3 * (largura_botao + espaco_x), y=70 + 4 * (altura_botao + espaco_y))
+        Button(width=11, height=4, text='1', relief='raised', border='3', bg='white', command=lambda: self.mostrar('1')).place(x=espaco_x, y=70 + 4 * (altura_botao + espaco_y))
+        Button(width=11, height=4, text='2', relief='raised', border='3', bg='white', command=lambda: self.mostrar('2')).place(x=espaco_x + largura_botao + espaco_x, y=70 + 4 * (altura_botao + espaco_y))
+        Button(width=11, height=4, text='3', relief='raised', border='3', bg='white', command=lambda: self.mostrar('3')).place(x=espaco_x + 2 * (largura_botao + espaco_x), y=70 + 4 * (altura_botao + espaco_y))
+        Button(width=11, height=4, text='+', relief='raised', border='3', bg='LightSkyBlue1', command=lambda: self.mostrar('+')).place(x=espaco_x + 3 * (largura_botao + espaco_x), y=70 + 4 * (altura_botao + espaco_y))
 
         # Sexta linha de botões
-        Button(width=11, height=4, text='.', relief='flat', bg='white', command=lambda: self.mostrar('.')).place(x=espaco_x, y=70 + 5 * (altura_botao + espaco_y))
-        Button(width=11, height=4, text='0', relief='flat', bg='white', command=lambda: self.mostrar('0')).place(x=espaco_x + largura_botao + espaco_x, y=70 + 5 * (altura_botao + espaco_y))
-        Button(width=11, height=4, text='=', relief='flat', bg='steel blue', command=self.calcular).place(x=espaco_x + 2 * (largura_botao + espaco_x), y=70 + 5 * (altura_botao + espaco_y))
+        Button(width=11, height=4, text='.', relief='raised', border='3', bg='white', command=lambda: self.mostrar('.')).place(x=espaco_x, y=70 + 5 * (altura_botao + espaco_y))
+        Button(width=11, height=4, text='0', relief='raised', border='3', bg='white', command=lambda: self.mostrar('0')).place(x=espaco_x + largura_botao + espaco_x, y=70 + 5 * (altura_botao + espaco_y))
+        Button(width=11, height=4, text='=', relief='raised', border='3', bg='RoyalBlue1', command=self.calcular).place(x=espaco_x + 2 * (largura_botao + espaco_x), y=70 + 5 * (altura_botao + espaco_y))
+        Button(width=11, height=4, text='C', relief='raised', border='3', bg='LightSkyBlue1', command=self.limpar).place(x=espaco_x + 3 * (largura_botao + espaco_x), y=70 + 5 * (altura_botao + espaco_y))
+
 
     def mostrar(self, valor):
         'Mostra o valor do botão na tela'
