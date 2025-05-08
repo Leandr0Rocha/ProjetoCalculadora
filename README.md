@@ -1,5 +1,5 @@
 # Calculadora em Python com Tkinter
-![Imagem do progama rodando.](image.png)
+![image](https://github.com/user-attachments/assets/adc43d22-be5c-43f0-9a6f-e065fef8ba0d)
 
 Este é um programa de calculadora gráfica desenvolvido em Python utilizando a biblioteca **Tkinter**. Ele suporta operações matemáticas básicas e avançadas.
 
